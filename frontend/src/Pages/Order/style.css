@@ -1,0 +1,28 @@
+@tailwind components;
+
+@layer components {
+    .order {
+        @apply w-full flex flex-row justify-between mt-5
+    }
+
+    .order__info {
+        @apply w-[300px] flex flex-col items-center
+    }
+
+    .order__info-header {
+        @apply text-xl font-openSans font-medium
+    }
+
+
+    .order .formLabel {
+        /*@apply !bg-dark-100*/
+    }
+
+    .order .button {
+        @apply mt-3
+    }
+
+    .order__cart {
+        @apply w-[70%]
+    }
+}

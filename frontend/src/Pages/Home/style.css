@@ -1,0 +1,27 @@
+@tailwind components;
+
+@layer components {
+    .home-content {
+        @apply flex flex-row justify-between align-top mt-5 w-full
+    }
+
+    .home-content__products {
+        @apply flex flex-row flex-wrap w-[72%]
+    }
+
+    .home-content__filters {
+        @apply w-[300px] max-w-xs flex flex-col
+    }
+
+    .filter {
+        @apply flex flex-col mb-3 
+    }
+
+    .filter .formLabel {
+        /*@apply !bg-dark-100*/
+    }
+
+    .filter__filter-header-text {
+        @apply font-openSans text-lg  font-bold
+    }
+}

@@ -1,0 +1,61 @@
+@tailwind components;
+
+@layer components {
+    .product {
+        @apply w-full flex flex-col mt-5
+    }
+
+    .product__info {
+        @apply w-full flex flex-row justify-between z-0
+    }
+
+    .product__image-block {
+        @apply w-1/2
+    }
+
+    .product__image {
+        @apply w-full
+    }
+
+    .product__content {
+        @apply w-[45%] flex flex-col mt-10
+    }
+
+    .product__header {
+        @apply w-full flex flex-row justify-between items-center
+    }
+
+    .product__header-text {
+        @apply font-oswald text-light-300 text-[40px] font-bold
+    }
+
+    .product__price {
+        @apply font-oswald text-xl
+    }
+
+    .product__info-block {
+        @apply mt-2 flex flex-row
+    }
+
+    .product__info-text {
+        @apply mr-8
+    }
+
+    .product__price {
+        @apply mt-5
+    }
+
+    .product__basket-block {
+        @apply mt-5 flex flex-row
+    }
+
+    .product__rating-button {
+        @apply flex flex-row items-center w-min self-end hover:cursor-pointer p-1 rounded
+        border-[1px] border-solid border-light-300
+        hover:bg-dark-400 transition-colors duration-150 mr-8
+    }
+
+    .product__rating-text {
+        @apply font-openSans text-2xl dark:text-light-300 text-dark-200 font-semibold ml-1
+    }
+}

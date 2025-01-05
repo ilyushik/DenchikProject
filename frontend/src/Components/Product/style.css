@@ -1,0 +1,15 @@
+@tailwind components;
+
+@layer components {
+    .product-link {
+        @apply w-1/3
+    }
+
+    .product-link__product-content {
+        @apply p-2 flex flex-col
+    }
+
+    .product-link__product-info-block {
+        @apply flex flex-row justify-between
+    }
+}

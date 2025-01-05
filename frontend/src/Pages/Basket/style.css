@@ -1,0 +1,7 @@
+@tailwind components;
+
+@layer components {
+    .basket {
+        @apply w-full mt-5 flex flex-col items-center
+    }
+}
