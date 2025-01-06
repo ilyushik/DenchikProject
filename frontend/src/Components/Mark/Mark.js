@@ -36,14 +36,15 @@ export default function Mark({visibility, setVisibility, id, getProduct}) {
     try {
       setLoading(true)
 
-      const url = "/Product/CreateMark"
+      const url = "/mark/addMark"
   
       const data = {
         productId: id,
         mark: mark.value
       }
   
-      await api.post(url, JSON.stringify(data))
+      const response = await api.post(url, data)
+      console.log(response.data)
 
       getProduct()
       
@@ -81,7 +82,10 @@ export default function Mark({visibility, setVisibility, id, getProduct}) {
               isOptionDisabled={option => option.disabled}
               isSearchable={false}
             />
-            <Button loading={loading} outline={true} onClick={() => rate()}>Rate</Button>
+            <Button loading={loading} outline={true} onClick={() => {
+              rate()
+              closeLoginMenu()
+            }}>Rate</Button>
           </div>
         </div>
       </div>

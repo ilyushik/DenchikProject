@@ -11,12 +11,13 @@ import { Product } from '../../Components/Product/Product'
 const brandOptions = [
   { value: 'Adidas', label: 'Adidas' },
   { value: 'Nike', label: 'Nike' },
+  { value: 'Casio', label: 'Casio' },
 ]
 
 const categoryOptions = [
-  { value: 'T-Shirt', label: 'T-Shirt' },
-  { value: 'Pants', label: 'Pants' },
-  { value: 'Sweatshirt', label: 'Sweatshirt' },
+  { value: 'Clothing', label: 'Clothing' },
+  { value: 'Footwear', label: 'Footwear' },
+  { value: 'Accessories', label: 'Accessories' },
 ]
 
 const colorOptions = [
@@ -24,6 +25,7 @@ const colorOptions = [
   { value: 'Blue', label: 'Blue' },
   { value: 'Red', label: 'Red' },
   { value: 'Green', label: 'Green' },
+  { value: 'Silver', label: 'Silver' },
 ]
 
 export default function Home() {
@@ -49,7 +51,7 @@ export default function Home() {
   const filter = async () => {
     setLoading(true)
 
-    const url = "/searchByFiler"
+    const url = "/products/searchByFilter"
 
     const data = {}
 
@@ -60,7 +62,7 @@ export default function Home() {
       data.categories = categoryValue.map(item => item.value)
 
     if(colorValue.length > 0) 
-      data.colours = colorValue.map(item => item.value)
+      data.colors = colorValue.map(item => item.value)
 
     if(minPrice !== "")
       data.minPrice = parseFloat(minPrice)
@@ -73,8 +75,10 @@ export default function Home() {
       data.maxPrice = -1
 
     const res = await api.post(url, JSON.stringify(data))
+    console.log(JSON.stringify(data))
 
-    setProducts(res.data.products)
+    setProducts(res.data)
+    console.log(res.data)
 
     setLoading(false)
   }

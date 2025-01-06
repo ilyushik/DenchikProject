@@ -11,16 +11,20 @@ export default function CreateComment({label, id}) {
 
   const onClickHandler = async () => {
     try {
-      const url = "/Product/CreateComment"
+      const url = "/comment/addComment"
 
       const data = {
-        productId: id,
+        productId: parseInt(id),
         text: comment
       }
 
-      await api.post(url, JSON.stringify(data))
+      console.log(data)
+
+      const response = await api.post(url, data)
 
       setComment("")
+
+      console.log(response.data)
     }
     catch(err) {
       console.log(err)

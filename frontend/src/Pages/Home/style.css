@@ -22,6 +22,10 @@
     }
 
     .filter__filter-header-text {
-        @apply font-openSans text-lg  font-bold
+        @apply font-openSans text-lg font-bold
     }
+}
+
+.filter__filter-header-text {
+    color: #fff;
 }

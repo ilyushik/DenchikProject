@@ -24,7 +24,7 @@ export default function ProductPage() {
 
   const [product, setProduct] = useState({})
 
-  const [mark, setMark] = useState({})
+  const [mark, setMark] = useState(0)
 
   const [size, setSize] = useState()
 
@@ -41,18 +41,9 @@ export default function ProductPage() {
     const res = await api.get(`/products/${params.id}`)
 
     let product = res.data
-
-    // const markRes = await api.post(markUrl, JSON.stringify({
-    //   productId: parseFloat(params.id)
-    // }))
-    //
-    // product = {
-    //   ...product,
-    //   mark: markRes.data !== null ? parseFloat(markRes.data.value) : 0,
-    //   amount: markRes.data !== null ? parseFloat(markRes.data.amount) : 0
-    // }
-    const markRes = await api.get(`/products/searchMark/${params.id}`)
+    const markRes = await api.get(`/mark/searchMark/${params.id}`)
     setMark(markRes.data)
+    console.log(markRes.data)
     setProduct(product)
   }
 
@@ -84,7 +75,7 @@ export default function ProductPage() {
             <p className="product__header-text">{product.name}</p>
             <div className="product__rating-button" onClick={() => setVisibility(true)}>
               <AiFillStar className="icon" size={"25px"}/>
-              <p className="product__rating-text">{parseFloat(mark.value).toFixed(2)}</p>
+              <p className="product__rating-text">{mark}</p>
             </div>
           </div>
           <p className="product__price default-text">{product.price}₴</p>

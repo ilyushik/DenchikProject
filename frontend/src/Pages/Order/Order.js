@@ -15,7 +15,7 @@ const typeOptions = [
 export default function Order() {
   const navigate = useNavigate()
 
-  const styles = useSelectTheme(false, '300px')
+  const styles = useSelectTheme(true, '300px')
 
   const [type, setType] = useState({ value: 'Post', label: 'Post' })
 
@@ -30,13 +30,13 @@ export default function Order() {
   const [postOffice, setPostOffice] = useState("")
   const [adress, setAdress] = useState("")
 
-  const [cart, setCart] = useState()
+  const [cart, setCart] = useState([])
 
   useEffect(() => {
     let cart = JSON.parse(localStorage.getItem('cart'))
-    if (cart) {
-      cart = cart.filter(el => el.amount > 0)
-    }
+    // if (cart) {
+    //   cart = cart.filter(el => el.amount > 0)
+    // }
     setCart(cart)
   }, [])
 
@@ -44,35 +44,43 @@ export default function Order() {
     try {
       setLoading(true)
 
-      const url = "/Order"
+      const url = "/order/addOrder"
 
       let data = {
         firstName: firstName,
         lastName: lastName,
         phone: phone,
         email: email,
-        cart: cart.map(item => { 
+        cartItems: cart.map(item => {
           return {
-            productId: item.productId,
+            product: item.product,
             amount: item.amount,
             size: item.size
           }
         }),
       }
 
-      if(type.value === 'Post')
+      if(type.value === 'Post') {
         data.postDelivery = {
           city: city,
           postOffice: postOffice
         }
-      else {
+        data.courierDelivery = null
+      } else {
         data.courierDelivery = {
           city: city,
           adress: adress
         }
+        data.postDelivery = null
       }
 
-      await api.post(url, JSON.stringify(data))
+      console.log(data)
+
+      const response = await api.post(url, JSON.stringify(data))
+
+      console.log(response.data)
+
+      localStorage.setItem('cart', JSON.stringify([]))
 
       setLoading(false)
 
