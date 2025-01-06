@@ -21,8 +21,7 @@ public class Mark {
     @Column(name = "amount")
     private int amount;
 
-    public Mark(int id, Product product, double value, int amount) {
-        this.id = id;
+    public Mark(Product product, double value, int amount) {
         this.product = product;
         this.value = value;
         this.amount = amount;

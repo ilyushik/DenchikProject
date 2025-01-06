@@ -2,6 +2,7 @@ package com.example.tshirtapp.Model;
 
 import jakarta.persistence.*;
 
+import java.util.ArrayList;
 import java.util.List;
 
 @Entity
@@ -25,8 +26,8 @@ public class Order {
     @Column(name = "email")
     private String email;
 
-    @OneToMany
-    @JoinColumn(name = "cart_items")
+    @Transient
+    @OneToMany(mappedBy = "order")
     private List<CartItem> cartItems;
 
     @ManyToOne
@@ -40,10 +41,9 @@ public class Order {
     public Order() {
     }
 
-    public Order(int id, String firstName, String lastName, String phone, String email,
+    public Order(String firstName, String lastName, String phone, String email,
                  List<CartItem> cartItems, PostDelivery postDelivery,
                  CourierDelivery courierDelivery) {
-        this.id = id;
         this.firstName = firstName;
         this.lastName = lastName;
         this.phone = phone;
@@ -52,6 +52,14 @@ public class Order {
         this.postDelivery = postDelivery;
         this.courierDelivery = courierDelivery;
     }
+
+//    public void addCartItem(CartItem cartItem) {
+//        if (this.cartItems == null) {
+//            this.cartItems = new ArrayList<>();
+//        }
+//        cartItem.setOrder(this);
+//        this.cartItems.add(cartItem);
+//    }
 
     public int getId() {
         return id;

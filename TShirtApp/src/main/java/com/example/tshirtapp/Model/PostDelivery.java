@@ -25,11 +25,9 @@ public class PostDelivery {
     public PostDelivery() {
     }
 
-    public PostDelivery(int id, String city, int postOffice, List<Order> orders) {
-        this.id = id;
+    public PostDelivery(String city, int postOffice) {
         this.city = city;
         this.postOffice = postOffice;
-        this.orders = orders;
     }
 
     public int getId() {

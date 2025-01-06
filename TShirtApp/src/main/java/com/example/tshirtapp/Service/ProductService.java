@@ -6,9 +6,7 @@ import com.example.tshirtapp.Repository.ProductRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import java.util.ArrayList;
 import java.util.List;
-import java.util.stream.Collectors;
 
 @Service
 public class ProductService {
@@ -26,19 +24,19 @@ public class ProductService {
     public List<Product> findByFilter(SearchProductByFilter searchProductByFilter) {
         List<Product> products = productRepository.findAll();
 
-        if (!searchProductByFilter.getBrands().isEmpty()) {
+        if (searchProductByFilter.getBrands() != null) {
             products = products.stream()
                     .filter(p -> searchProductByFilter.getBrands().contains(p.getBrand()))
                     .toList();
         }
 
-        if (!searchProductByFilter.getCategories().isEmpty()) {
+        if (searchProductByFilter.getCategories() != null) {
             products = products.stream()
                     .filter(p -> searchProductByFilter.getCategories().contains(p.getCategory()))
                     .toList();
         }
 
-        if (!searchProductByFilter.getColors().isEmpty()) {
+        if (searchProductByFilter.getColors() != null) {
             products = products.stream()
                     .filter(p -> searchProductByFilter.getColors().contains(p.getColor()))
                     .toList();

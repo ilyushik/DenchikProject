@@ -25,11 +25,9 @@ public class CourierDelivery {
     public CourierDelivery() {
     }
 
-    public CourierDelivery(int id, String city, String address, List<Order> orders) {
-        this.id = id;
+    public CourierDelivery(String city, String address) {
         this.city = city;
         this.address = address;
-        this.orders = orders;
     }
 
     public int getId() {

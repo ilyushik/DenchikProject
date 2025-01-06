@@ -20,8 +20,7 @@ public class Comment {
     public Comment() {
     }
 
-    public Comment(int id, Product product, String text) {
-        this.id = id;
+    public Comment(Product product, String text) {
         this.product = product;
         this.text = text;
     }

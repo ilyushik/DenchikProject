@@ -18,9 +18,8 @@ public class CartItem {
 
     private String size;
 
-    @Transient
     @ManyToOne
-    @JoinColumn(name = "order", insertable = false, updatable = false)
+    @JoinColumn(name = "purchase", referencedColumnName = "id")
     private Order order;
 
     // Empty constructor
@@ -28,8 +27,7 @@ public class CartItem {
     }
 
     // Full constructor
-    public CartItem(int id, Product product, int amount, String size, Order order) {
-        this.id = id;
+    public CartItem(Product product, int amount, String size, Order order) {
         this.product = product;
         this.amount = amount;
         this.size = size;
